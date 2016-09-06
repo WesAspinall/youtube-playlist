@@ -1,0 +1,9 @@
+// @import "bourbon";
+// @import "neat";
+@import "font-awesome";
+@import "bootstrap";
+
+//apply box-sizing to entire doc
+*, *:before, *:after {
+  box-sizing: border-box;
+}
