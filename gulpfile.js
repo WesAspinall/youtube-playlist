@@ -10,6 +10,7 @@ const babel = require('babelify');
 const browserify = require('browserify');
 const watch = require('gulp-watch');
 const uglify = require('gulp-uglify');
+const pump = require('pump');
 
 //css 
 const sass = require('gulp-sass');
@@ -19,13 +20,8 @@ const autoprefixer = require('autoprefixer');
 //font libraries
 const fontAwesome = require('node-font-awesome');
 
-//Bootstrap
-const path = require('path');
-const bootstrapEntry = require.resolve('bootstrap-sass');
-const bootstrapSCSS = path.join(bootstrapEntry, '..', '..', 'stylesheets');
-
 //localhost, node server
-const server = require('gulp-server-livereload');
+const webserver = require('gulp-webserver');
 const nodemon = require('gulp-nodemon');
 
 //linters
@@ -57,19 +53,12 @@ gulp.task('sass', () => {
       loadMaps: true
     }))
     .pipe(sass({
-      includePaths: require('node-neat').with([fontAwesome.scssPath, bootstrapSCSS])
+      includePaths: require('node-neat').with([fontAwesome.scssPath])
     }))
     .pipe(postcss([ autoprefixer({ browsers: ['last 2 versions'] }) ]))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('./app/css'));
 });
-
-// gulp.task('normalize', () => {
-//   gulp.src(require.resolve('normalize.css'))
-//     .pipe(notifyError())
-//     .pipe(uglify())
-//     .pipe(gulp.dest('./app/css'));
-// });
 
 gulp.task('fonts', () => {
   gulp.src(fontAwesome.fonts)
@@ -103,7 +92,6 @@ gulp.task('browserify', () => {
     .on('error', browserifyError)
     .pipe(source('./main.js'))
     .pipe(buffer())
-    .pipe(uglify())
     .pipe(sourcemaps.init({
       loadMaps: true
     }))
@@ -128,6 +116,15 @@ gulp.task('browserify-test', () => {
     .pipe(gulp.dest('./spec/'));
 });
 
+gulp.task('test-server', ['browserify-test'], () => {
+  gulp.src('spec')
+    .pipe(server({
+      livereload: {
+        enable: true
+      },
+    }))
+});
+
 
 gulp.task('watch', () => {
   watch('./sass/**/*.scss', () => gulp.start('sass'));
@@ -139,13 +136,20 @@ gulp.task('watch', () => {
 //////////////////
 // server tasks//
 ////////////////
-gulp.task('server', ['default'], () => {
+gulp.task('server', function() {
   gulp.src('app')
-    .pipe(server({
+    .pipe(webserver({
       livereload: {
-        enable: true
-      },
-    }))
+        enable: true, // need this set to true to enable livereload 
+        filter: function(fileName) {
+          if (fileName.match(/.map$/)) { // exclude all source maps from livereload 
+            return false;
+          } else {
+            return true;
+          }
+        }
+      }
+    }));
 });
 
 gulp.task('nodemon', () => {
@@ -154,7 +158,7 @@ gulp.task('nodemon', () => {
     script: 'server.js'
   })
   return stream;
-});
+})
 
 gulp.task('lint', ['style:js', 'hint:html']);
 
