@@ -5,7 +5,7 @@ let config = function($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state('root', {
             abstract: true,
-            templateUrl: 'templates/app-layout/layout.tpl.html'
+            templateUrl: 'index.html'
         })
         .state('root.splash', {
             url: '/',
