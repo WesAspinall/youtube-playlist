@@ -2175,6 +2175,10 @@ html {
   overflow: visible;
   clip: auto; }
 
+@media only screen and (max-width: 500px) {
+  body {
+    background-color: blue; } }
+
 *, *:before, *:after {
   box-sizing: border-box; }
 
