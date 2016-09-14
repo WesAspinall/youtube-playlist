@@ -2,7 +2,7 @@ const ngYoutubeEmbed = function() {
 
  return {
             restrict: 'E',
-            template: '<div ng-bind-html="youtubeEmbedFrame"></div><br><button class="sizer"><i class="fa fa-expand" aria-hidden="true"></i></button>',
+            template: '<div ng-bind-html="youtubeEmbedFrame"></div><br><button class="sizer-btn"><i class="fa fa-expand" aria-hidden="true"></i></button>',
             scope: {
                 url: '=',
                 autoplay: '@autoplay',
