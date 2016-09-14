@@ -2417,7 +2417,7 @@ article.type-system-serif, .type-system-serif {
       padding-bottom: 1em; }
       .plistEmbed article .type-system-serif:last-child {
         margin-right: 0; }
-  .sizer {
+  .sizer-btn {
     display: none; } }
 
 *, *:before, *:after {

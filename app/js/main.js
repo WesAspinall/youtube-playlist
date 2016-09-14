@@ -31,9 +31,7 @@ Object.defineProperty(exports, '__esModule', {
 });
 exports['default'] = {
     PARAMS: {
-        //codecademy's api key
-        // API_KEY: 'AIzaSyCR5In4DZaTP6IEZQ0r1JceuvluJRzQNLE',
-        API_KEY: 'AIzaSyDwUxjAYUo4MsgECo9xdSMSKZTZI3hZHos',
+        API_KEY: 'AIzaSyBe8SibwUj23yFW_uYdyKw5fCOyZPgypLM',
         LIST_ID: 'PLElfEOBGqoUkvqwPb31hWZ3ngAfCBUc5Z',
         CHANNEL_ID: 'UCTgg3k-iHG_OwbR79jDmmLA'
     }
@@ -130,7 +128,7 @@ var ngYoutubeEmbed = function ngYoutubeEmbed() {
 
     return {
         restrict: 'E',
-        template: '<div ng-bind-html="youtubeEmbedFrame"></div><br><button class="sizer"><i class="fa fa-expand" aria-hidden="true"></i></button>',
+        template: '<div ng-bind-html="youtubeEmbedFrame"></div><br><button class="sizer-btn"><i class="fa fa-expand" aria-hidden="true"></i></button>',
         scope: {
             url: '=',
             autoplay: '@autoplay',
@@ -328,7 +326,6 @@ var YoutubeService = function YoutubeService($q, FILESERVER) {
     var deferred = $q.defer();
 
     this.onClientLoad = onClientLoad;
-    // this.videoIds = videoIds;
 
     function onClientLoad() {
         gapi.client.setApiKey(key);
@@ -343,15 +340,7 @@ var YoutubeService = function YoutubeService($q, FILESERVER) {
             });
         });
         return deferred.promise;
-    };
-
-    // function videoIds(data) {
-    //     for(var i = 0; i < data.length; i++) {
-    //           let vId = data[i].snippet.resourceId.videoId;
-    //           vm.videoIds.push('https://www.youtube.com/watch?v='+vId);
-    //         }
-    //         console.log(vm.videoIds);
-    // }
+    }
 };
 YoutubeService.$inject = ['$q', 'FILESERVER'];
 

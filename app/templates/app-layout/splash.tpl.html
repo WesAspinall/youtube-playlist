@@ -4,10 +4,10 @@
    <article class="type-system-serif plistEmbed" ng-repeat="data in vm.videoData track by data.id">
 
     <h1>{{data.snippet.title}}</h1>
-    <p class="date">Posted: {{data.snippet.publishedAt}}</p>
+    <p class="date">Posted: {{data.snippet.publishedAt | date: 'medium'}}</p>
 
     <div class="player-container"> 
-      <ng-youtube-embed url='vm.url+data.snippet.resourceId.videoId' width="100%" playsinline="true"></ng-youtube-embed>
+      <ng-youtube-embed url='vm.url+data.snippet.resourceId.videoId' width="100%" playsinline="true" showinfo="false"></ng-youtube-embed>
     </div>
 
     <div class="article-text-container">

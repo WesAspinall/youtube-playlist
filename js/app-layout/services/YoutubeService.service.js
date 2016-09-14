@@ -5,7 +5,6 @@ const YoutubeService = function($q, FILESERVER) {
     let deferred = $q.defer();
 
     this.onClientLoad = onClientLoad;
-    // this.videoIds = videoIds;
    
     function onClientLoad() {
         gapi.client.setApiKey(key);
@@ -20,15 +19,7 @@ const YoutubeService = function($q, FILESERVER) {
             });
         });
         return deferred.promise;
-    };
-
-    // function videoIds(data) {
-    //     for(var i = 0; i < data.length; i++) {
-    //           let vId = data[i].snippet.resourceId.videoId;
-    //           vm.videoIds.push('https://www.youtube.com/watch?v='+vId);
-    //         }
-    //         console.log(vm.videoIds);
-    // }
+    }
 };
 YoutubeService.$inject = ['$q','FILESERVER'];
 
