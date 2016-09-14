@@ -5,28 +5,34 @@
       @include outer-container;
       border-bottom: 1px solid #DDDDDD;
       margin-bottom: 1em;
-      max-height: 350px;
+      padding: 1em;
+      max-height: auto;
       overflow: hidden;
 
       .player-container {
         vertical-align: middle;
       }
 
-      .player-container iframe {
-        @include span-columns(4);
+      .player-container {
+        @include span-columns(8);
         padding: 0 1em 1em 1em;
-        float: left;
+        float: right;
+        transition: all 1s ease;
       }
-
+      .player-container-expanded {
+        @include span-columns(12);
+        padding: 0 1em 1em 1em;
+        float: right;
+        transition: all 1s ease;
+        max-height: 800px;
+      }
+   
       article .type-system-serif {
         @include span-columns(7);
-        float: right;
+        float: left;
         padding-bottom: 1em;
-      }
-
+      }          
 
     }
-
-
 
 }

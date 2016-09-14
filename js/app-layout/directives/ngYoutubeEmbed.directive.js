@@ -1,57 +1,129 @@
 const ngYoutubeEmbed = function() {
 
-return {
-    restrict: "E",
-    template: '<div ng-bind-html="youtubeEmbedFrame"></div>',
-    scope: {
-        url: "=",
-        autoplay: "@autoplay",
-        autohide: "@autohide",
-        ccloadpolicy: "@ccloadpolicy",
-        color: "@color",
-        controls: "@controls",
-        disablekb: "@disablekb",
-        end: "@end",
-        fs: "@fs",
-        hl: "@hl",
-        ivloadpolicy: "@ivloadpolicy",
-        playlist: "@playlist",
-        playsinline: "@playsinline",
-        rel: "@rel",
-        showinfo: "@showinfo",
-        start: "@start",
-        theme: "@theme",
-        width: "@width",
-        height: "@height",
-        gaming: "@gaming"
-    },
-    
-    controller: ["$scope", "$sce", function(a, b) {
-        function c(b) {
-            var c = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/,
-                d = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-            "true" === a.gaming && (c = /^(?:https?:\/\/)?(?:www\.)?(?:gaming.youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/, d = /^.*(\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/);
-            var e = (b.match(d), b.match(c));
-            if (null != e) {
-                var f = e[1];
-                return f
-            }
-        }
-        var d = a.url;
-        if (void 0 != d) {
-            if (a.playlistArray = [], void 0 != a.playlist)
-                for (var e = a.playlist.split(","), f = 0; f < e.length; f++) a.playlistArray.push(c(e[f]));
-            var g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y;
-            g = "true" == a.autoplay ? 1 : 0, h = "true" == a.autohide ? 1 : 0, i = "true" == a.ccloadpolicy ? 1 : 0, j = "white" == a.color ? "white" : "red", k = "false" == a.controls ? 0 : 1, l = "false" == a.disablekb ? 0 : 1, m = a.end ? a.end : "", n = "false" == a.fs ? 0 : 1, o = a.hl ? a.hl : "", p = "false" == a.ivloadpolicy ? 0 : 1, q = a.playlistArray, r = "true" == a.playsinline ? 1 : 0, s = "false" == a.rel ? 0 : 1, t = "false" == a.showinfo ? 0 : 1, u = a.start ? a.start : "", v = a.theme ? a.theme : "", y = a.gaming ? a.gaming : "", w = void 0 != a.width ? a.width : "500px", x = void 0 != a.height ? a.height : "350px", a.$watch("url", function(d) {
-                if (d) {
-                    var e, f = c(d);
-                    e = y ? "<iframe width=" + w + " height=" + x + ' src="https://gaming.youtube.com/embed/' + f + "?autoplay=" + g + "&autohide=" + h + "&cc_load_policy=" + i + "&color=" + j + "&controls=" + k + "&disablekb=" + l + "&end=" + m + "&fs=" + n + "&hl=" + o + "&playlist=" + q + "&playsinline=" + r + "&rel=" + s + "&showinfo=" + t + "&start=" + u + "&theme=" + v + '" frameborder="0" allowfullscreen></iframe>' : "<iframe width=" + w + " height=" + x + ' src="https://www.youtube.com/embed/' + f + "?autoplay=" + g + "&autohide=" + h + "&cc_load_policy=" + i + "&color=" + j + "&controls=" + k + "&disablekb=" + l + "&end=" + m + "&fs=" + n + "&hl=" + o + "&playlist=" + q + "&playsinline=" + r + "&rel=" + s + "&showinfo=" + t + "&start=" + u + "&theme=" + v + '" frameborder="0" allowfullscreen></iframe>', a.youtubeEmbedFrame = b.trustAsHtml(e)
-                }
-            })
-        }
-    }]
-}
+ return {
+            restrict: 'E',
+            template: '<div ng-bind-html="youtubeEmbedFrame"></div><br><button class="sizer"><i class="fa fa-expand" aria-hidden="true"></i></button>',
+            scope: {
+                url: '=',
+                autoplay: '@autoplay',
+                autohide: '@autohide',
+                ccloadpolicy: '@ccloadpolicy',
+                color: '@color',
+                controls: '@controls',
+                disablekb: '@disablekb',
+                end: '@end',
+                fs: '@fs',
+                hl: '@hl',
+                ivloadpolicy: '@ivloadpolicy',
+                playlist: '@playlist',
+                playsinline: '@playsinline',
+                rel: '@rel',
+                showinfo: '@showinfo',
+                start: '@start',
+                theme: '@theme',
+                width: '@width',
+                height: '@height',
+                gaming: '@gaming'
+            },
+            link: function(scope, element, attrs) {
+                let button =  element.find('button');
+                let x = element.parent(); 
 
+                button.on('click', function() {
+                    x.toggleClass('player-container-expanded');
+                    if(x.hasClass('player-container-expanded')){
+                        button.html('<i class="fa fa-compress" aria-hidden="true"></i>');
+                    } else {
+                        button.html('<i class="fa fa-expand" aria-hidden="true"></i>')
+                    }
+                })
+            },
+            controller: ['$scope', '$sce', function($scope, $sce) {
+
+                // Saving the video link 
+                var link = $scope.url;
+
+                // Function to fetch id from youtube link
+                function fetchId(link) {
+
+                    var p = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+                    var q = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+
+                    if($scope.gaming === 'true') {
+                        p = /^(?:https?:\/\/)?(?:www\.)?(?:gaming.youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+                        q = /^.*(\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+                    }
+
+                    var match = link.match(q);
+                    var id = link.match(p);
+
+                    if (id != null) {
+                        var ytId = id[1];
+                        return ytId;
+                    }
+                }
+
+                if (link != undefined) {
+
+                    // Detecting playlist and fetching video ids
+                    $scope.playlistArray = [];
+                    if ($scope.playlist != undefined) {
+                        var playlistArray = $scope.playlist.split(',');
+                        for (var i = 0; i < playlistArray.length; i++) {
+                            $scope.playlistArray.push(fetchId(playlistArray[i])); // Scope variable to store playlist ids
+                        }
+                    }
+
+                    // Declaring parameters for iframe
+                    var autoplay, autohide, ccloadpolicy, color, controls, disablekb, end, fs, hl, ivloadpolicy, playlist, playsinline, rel, showinfo, start, theme, width, height, gaming;
+
+                    // Parameter flags to enable/disable youtube parameters
+                    $scope.autoplay == 'true' ? autoplay = 1 : autoplay = 0; // Autoplay parameter
+                    $scope.autohide == 'true' ? autohide = 1 : autohide = 0; // Autohide parameter
+                    $scope.ccloadpolicy == 'true' ? ccloadpolicy = 1 : ccloadpolicy = 0; // CCLoadPolicy parameter
+                    $scope.color == 'white' ? color = 'white' : color = 'red'; // Color parameter
+                    $scope.controls == 'false' ? controls = 0 : controls = 1; // Controls parameter
+                    $scope.disablekb == 'false' ? disablekb = 0 : disablekb = 1; // DisableKb parameter
+                    end = $scope.end ? $scope.end : ''; // End parameter
+                    $scope.fs == 'false' ? fs = 0 : fs = 1; // Fullscreen parameter
+                    hl = $scope.hl ? $scope.hl : ''; // Inteface language parameter
+                    $scope.ivloadpolicy == 'false' ? ivloadpolicy = 0 : ivloadpolicy = 1; // IvLoadPolicy parameter
+                    playlist = $scope.playlistArray; // Playlist parameter
+                    $scope.playsinline == 'true' ? playsinline = 1 : playsinline = 0; // Playsinline parameter
+                    $scope.rel == 'false' ? rel = 0 : rel = 1; // Rel parameter
+                    $scope.showinfo == 'false' ? showinfo = 0 : showinfo = 1; // ShowInfo parameter
+                    start = $scope.start ? $scope.start : ''; // Start parameter
+                    theme = $scope.theme ? $scope.theme : ''; // Theme parameter
+                    gaming = $scope.gaming ? $scope.gaming : ''; // Gaming parameter
+
+                    // Please use this link to view all available youtube player parameters - https://developers.google.com/youtube/player_parameters
+
+                    // Setting default width and height if not provided
+                    $scope.width != undefined ? width = $scope.width : width = '500px';
+                    $scope.height != undefined ? height = $scope.height : height = '350px';
+
+                    // Update iframe when url attribute changes
+                    $scope.$watch('url', function(newVal) {
+                        if (newVal) {
+
+                            // Saving id for youtube video link
+                            var ytId = fetchId(newVal),
+                                iframe;
+
+                            // Creating iframe for video playback
+                            if(!gaming) {
+                                iframe = '<iframe width=' + width + ' height=' + height + ' src="https://www.youtube.com/embed/' + ytId + '?autoplay=' + autoplay + '&autohide=' + autohide + '&cc_load_policy=' + ccloadpolicy + '&color=' + color + '&controls=' + controls + '&disablekb=' + disablekb + '&end=' + end + '&fs=' + fs + '&hl=' + hl + '&playlist=' + playlist + '&playsinline=' + playsinline + '&rel=' + rel + '&showinfo=' + showinfo + '&start=' + start + '&theme=' + theme + '" frameborder="0" allowfullscreen></iframe>';
+                            }
+                            else {
+                                iframe = '<iframe width=' + width + ' height=' + height + ' src="https://gaming.youtube.com/embed/' + ytId + '?autoplay=' + autoplay + '&autohide=' + autohide + '&cc_load_policy=' + ccloadpolicy + '&color=' + color + '&controls=' + controls + '&disablekb=' + disablekb + '&end=' + end + '&fs=' + fs + '&hl=' + hl + '&playlist=' + playlist + '&playsinline=' + playsinline + '&rel=' + rel + '&showinfo=' + showinfo + '&start=' + start + '&theme=' + theme + '" frameborder="0" allowfullscreen></iframe>';
+                            }
+                            // Sanitizing and rendering iframe
+                            $scope.youtubeEmbedFrame = $sce.trustAsHtml(iframe);
+                        }
+                    });
+                }
+            }]
+        }
 };
 
 ngYoutubeEmbed.$inject = [];

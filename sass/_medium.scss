@@ -1,11 +1,5 @@
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 699px) {
    
-
-  //apply box-sizing to entire doc
-  *, *:before, *:after {
-      box-sizing: border-box;
-  }
-
   .plistEmbed {
 
     @include outer-container;
@@ -19,7 +13,7 @@
     }
 
     .player-container {
-      @include span-columns(12);
+      @include span-columns(8);
       padding: 0 1em 1em 1em;
       float: right;
       transition: all 1s ease;
@@ -40,8 +34,6 @@
     }          
 
   }
-  .sizer {
-    display: none;
-  }
+
 
 }

@@ -2277,37 +2277,49 @@ article.type-system-serif, .type-system-serif {
     font-style: italic;
     padding-bottom: 1em; }
 
-@media only screen and (max-width: 500px) {
-  *, *:before, *:after {
-    box-sizing: border-box; }
-  body {
-    margin: 2em; }
+@media only screen and (max-width: 699px) {
   .plistEmbed {
     max-width: 68em;
     margin-left: auto;
     margin-right: auto;
-    border: 1px solid red;
+    border-bottom: 1px solid #DDDDDD;
     margin-bottom: 1em;
-    max-height: 500px;
+    max-height: auto;
     overflow: hidden; }
     .plistEmbed::after {
       clear: both;
       content: "";
       display: table; }
-    .plistEmbed .player-container iframe {
+    .plistEmbed .player-container {
+      vertical-align: middle; }
+    .plistEmbed .player-container {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 65.88078%;
+      padding: 0 1em 1em 1em;
+      float: right;
+      transition: all 1s ease; }
+      .plistEmbed .player-container:last-child {
+        margin-right: 0; }
+    .plistEmbed .player-container-expanded {
       float: left;
       display: block;
       margin-right: 2.35765%;
       width: 100%;
-      padding: 1em; }
-      .plistEmbed .player-container iframe:last-child {
+      padding: 0 1em 1em 1em;
+      float: right;
+      transition: all 1s ease;
+      max-height: 800px; }
+      .plistEmbed .player-container-expanded:last-child {
         margin-right: 0; }
     .plistEmbed article .type-system-serif {
       float: left;
       display: block;
       margin-right: 2.35765%;
-      width: 100%;
-      background-color: black; }
+      width: 57.35098%;
+      float: left;
+      padding-bottom: 1em; }
       .plistEmbed article .type-system-serif:last-child {
         margin-right: 0; } }
 
@@ -2318,7 +2330,8 @@ article.type-system-serif, .type-system-serif {
     margin-right: auto;
     border-bottom: 1px solid #DDDDDD;
     margin-bottom: 1em;
-    max-height: 350px;
+    padding: 1em;
+    max-height: auto;
     overflow: hidden; }
     .plistEmbed::after {
       clear: both;
@@ -2326,29 +2339,94 @@ article.type-system-serif, .type-system-serif {
       display: table; }
     .plistEmbed .player-container {
       vertical-align: middle; }
-    .plistEmbed .player-container iframe {
+    .plistEmbed .player-container {
       float: left;
       display: block;
       margin-right: 2.35765%;
-      width: 31.76157%;
+      width: 65.88078%;
       padding: 0 1em 1em 1em;
-      float: left; }
-      .plistEmbed .player-container iframe:last-child {
+      float: right;
+      transition: all 1s ease; }
+      .plistEmbed .player-container:last-child {
+        margin-right: 0; }
+    .plistEmbed .player-container-expanded {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 100%;
+      padding: 0 1em 1em 1em;
+      float: right;
+      transition: all 1s ease;
+      max-height: 800px; }
+      .plistEmbed .player-container-expanded:last-child {
         margin-right: 0; }
     .plistEmbed article .type-system-serif {
       float: left;
       display: block;
       margin-right: 2.35765%;
       width: 57.35098%;
-      float: right;
+      float: left;
       padding-bottom: 1em; }
       .plistEmbed article .type-system-serif:last-child {
         margin-right: 0; } }
+
+@media only screen and (max-width: 550px) {
+  *, *:before, *:after {
+    box-sizing: border-box; }
+  .plistEmbed {
+    max-width: 68em;
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom: 1px solid #DDDDDD;
+    margin-bottom: 1em;
+    max-height: auto;
+    overflow: hidden; }
+    .plistEmbed::after {
+      clear: both;
+      content: "";
+      display: table; }
+    .plistEmbed .player-container {
+      vertical-align: middle; }
+    .plistEmbed .player-container {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 100%;
+      padding: 0 1em 1em 1em;
+      float: right;
+      transition: all 1s ease; }
+      .plistEmbed .player-container:last-child {
+        margin-right: 0; }
+    .plistEmbed .player-container-expanded {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 100%;
+      padding: 0 1em 1em 1em;
+      float: right;
+      transition: all 1s ease;
+      max-height: 800px; }
+      .plistEmbed .player-container-expanded:last-child {
+        margin-right: 0; }
+    .plistEmbed article .type-system-serif {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 57.35098%;
+      float: left;
+      padding-bottom: 1em; }
+      .plistEmbed article .type-system-serif:last-child {
+        margin-right: 0; }
+  .sizer {
+    display: none; } }
 
 *, *:before, *:after {
   box-sizing: border-box; }
 
 body {
   margin: 2em; }
+
+.page-title {
+  text-align: right; }
 
 /*# sourceMappingURL=main.css.map */

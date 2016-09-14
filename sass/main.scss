@@ -6,8 +6,9 @@
 
 //partials
 @import 'type-system';
-@import 'mobile';
+@import 'medium';
 @import 'desktop';
+@import 'mobile';
 
 //apply box-sizing to entire doc
 *, *:before, *:after {
@@ -16,4 +17,8 @@
 
 body {
   margin: 2em;
+}
+
+.page-title {
+  text-align: right;
 }

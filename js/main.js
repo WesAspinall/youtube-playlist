@@ -1,7 +1,9 @@
-import angular from 'angular';
+import $ from 'jquery';
 
+import angular from 'angular';
 import './app-core/index';
 import './app-layout/index';
+
 
 
 angular
