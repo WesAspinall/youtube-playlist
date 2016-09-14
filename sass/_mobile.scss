@@ -1,5 +1,34 @@
 @media only screen and (max-width: 500px) {
-    body {
-        background-color: blue;
+   
+
+    //apply box-sizing to entire doc
+    *, *:before, *:after {
+        box-sizing: border-box;
     }
+
+    body {
+        margin: 2em;
+    }   
+      .plistEmbed {
+      @include outer-container;
+      border: 1px solid red;
+      margin-bottom: 1em;
+      max-height: 500px;
+      overflow: hidden;
+
+      .player-container iframe {
+        @include span-columns(12);
+        padding: 1em;
+   
+      }
+
+      article .type-system-serif {
+        @include span-columns(12);     
+        background-color: black;
+      }
+
+
+
+    }
+
 }

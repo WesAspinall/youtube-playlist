@@ -1,12 +1,13 @@
 @import "bourbon";
 @import "neat";
-
-
 @import "font-awesome";
 
-// //partials
-@import "mobile";
 
+
+//partials
+@import 'type-system';
+@import 'mobile';
+@import 'desktop';
 
 //apply box-sizing to entire doc
 *, *:before, *:after {
@@ -16,28 +17,3 @@
 body {
   margin: 2em;
 }
-
-.plistWrapper {
-  border: .5em solid black;
-
-
-  .plistEmbed {
-    @include outer-container;
-    margin: 1em;
-
-    .player {
-      @include span-columns(3);
-      border-radius: 10px;
-    }
-
-    .vidDescription {
-      @include span-columns(9);
-    }
-  }
-
-
-}
-
-
-
-

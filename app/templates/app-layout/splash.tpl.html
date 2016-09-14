@@ -1,16 +1,23 @@
-<show-spinner txt="vm.customText"></show-spinner>
 <div class="plistWrapper">
+  <button ui-sref="root.home"></button><p class="type-system-serif">{{::vm.pageTitle}}</p>
 
-  <div class="plistEmbed"ng-repeat="data in vm.videoData track by data.id">
-    <ng-youtube-embed class="player" url='vm.url+data.snippet.resourceId.videoId' width="100%" height="290"></ng-youtube-embed>
-    <div class="vidDescription">
-      <div>
-        <h1>{{data.snippet.title}}</h1>
-        <h6>Custom Text: {{vm.customText}}</h6>
-        <p>{{data.snippet.description}}</p>
-      </div>
+   <article class="type-system-serif plistEmbed" ng-repeat="data in vm.videoData track by data.id">
+    <div class="player-container"> 
+      <ng-youtube-embed url='vm.url+data.snippet.resourceId.videoId' width="100%" playsinline="true"></ng-youtube-embed>
     </div>
-  </div>
+
+
+    <div class="article-text-container">
+    <h1>{{data.snippet.title}}</h1>
+    <p class="date">Posted: {{data.snippet.publishedAt}}</p>
+    <p><span>Lorem ipsum dolor sit amet</span>, consectetur adipisicing elit. Consequatur a, ullam, voluptatum incidunt neque doloremque vel inventore distinctio laudantium harum</a> illo quam nulla dolor alias iure impedit! Accusamus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, a, ullam, voluptatum incidunt neque porro numquam doloremque vel inventore distinctio laudantium harum illo quam nulla dolor alias iure impedit.
+      <a href="javascript:void(0)" class="read-more">Read More <span>&rsaquo;</span></a>
+    </p>
+    </div>
+
+  </article>
+  
+
 </div>
   
        

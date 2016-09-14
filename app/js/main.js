@@ -69,6 +69,7 @@ Object.defineProperty(exports, '__esModule', {
 });
 var SplashCtrl = function SplashCtrl(YoutubeService) {
     var vm = this;
+    vm.pageTitle = 'Recommended Videos';
 
     vm.url = 'https://www.youtube.com/watch?v=';
     vm.videoData = [];

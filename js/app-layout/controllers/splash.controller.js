@@ -1,6 +1,7 @@
 const SplashCtrl = function(YoutubeService) {
     let vm = this;
-
+    vm.pageTitle = 'Recommended Videos';
+    
     vm.url = 'https://www.youtube.com/watch?v=';
     vm.videoData = [];
     vm.videoTitles = []

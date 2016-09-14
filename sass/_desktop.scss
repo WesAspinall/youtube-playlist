@@ -1,0 +1,32 @@
+@media only screen and (min-width: 700px) {
+
+    .plistEmbed {
+
+      @include outer-container;
+      border-bottom: 1px solid #DDDDDD;
+      margin-bottom: 1em;
+      max-height: 350px;
+      overflow: hidden;
+
+      .player-container {
+        vertical-align: middle;
+      }
+
+      .player-container iframe {
+        @include span-columns(4);
+        padding: 0 1em 1em 1em;
+        float: left;
+      }
+
+      article .type-system-serif {
+        @include span-columns(7);
+        float: right;
+        padding-bottom: 1em;
+      }
+
+
+    }
+
+
+
+}

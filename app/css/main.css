@@ -2175,41 +2175,180 @@ html {
   overflow: visible;
   clip: auto; }
 
+article.type-system-serif, .type-system-serif {
+  font-family: "Merriweather", serif;
+  text-align: left;
+  padding-bottom: 2em; }
+  article.type-system-serif::after, .type-system-serif::after {
+    clear: both;
+    content: "";
+    display: table; }
+  article.type-system-serif h1, article.type-system-serif h2, article.type-system-serif h3, article.type-system-serif p, .type-system-serif h1, .type-system-serif h2, .type-system-serif h3, .type-system-serif p {
+    margin: 0; }
+  article.type-system-serif hr, .type-system-serif hr {
+    border-bottom: 1px solid #DDD;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    margin: 1.5em 0; }
+  article.type-system-serif p, .type-system-serif p {
+    color: #333;
+    line-height: 1.5em; }
+  article.type-system-serif a, .type-system-serif a {
+    color: #477DCA;
+    text-decoration: none; }
+  article.type-system-serif .type, .type-system-serif .type {
+    border-bottom: 1px solid;
+    display: inline-block;
+    font-family: "Merriweather Sans", sans-serif;
+    font-size: 0.7em;
+    font-weight: 700;
+    margin-bottom: 2em;
+    padding: 0.3em 0;
+    text-align: left;
+    text-transform: uppercase; }
+  article.type-system-serif h1, .type-system-serif h1 {
+    font-family: "Lusitana", serif;
+    font-size: 1.5em;
+    font-weight: 700;
+    margin-bottom: 0.5em;
+    text-align: justified; }
+    @media screen and (min-width: 40em) {
+      article.type-system-serif h1, .type-system-serif h1 {
+        font-size: 2.6em; } }
+  article.type-system-serif h2, .type-system-serif h2 {
+    font-family: "Merriweather", serif;
+    font-size: 1em;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.6em;
+    margin-bottom: 0.9em; }
+    @media screen and (min-width: 40em) {
+      article.type-system-serif h2, .type-system-serif h2 {
+        font-size: 1.2em; } }
+  article.type-system-serif code, .type-system-serif code {
+    background: #F7F7F7;
+    border-radius: 4.5px;
+    border: 1px solid #E0E0E0;
+    font-family: monaco;
+    font-size: 0.75em;
+    font-style: normal;
+    padding: 0.1em 0.4em;
+    white-space: nowrap; }
+  article.type-system-serif h3, .type-system-serif h3 {
+    font-family: "Lusitana", serif;
+    font-size: 1.4em;
+    font-weight: 400;
+    line-height: 1.3em;
+    margin-bottom: 0.4em; }
+  article.type-system-serif p.date, .type-system-serif p.date {
+    color: rgba(51, 51, 51, 0.4);
+    font-family: "Merriweather", serif;
+    font-size: 0.9em;
+    font-style: italic;
+    margin-bottom: 0.3em; }
+  article.type-system-serif p, .type-system-serif p {
+    font-family: "Merriweather", serif;
+    font-size: 0.9em;
+    line-height: 1.6em;
+    margin-bottom: 1.5em; }
+    article.type-system-serif p span, .type-system-serif p span {
+      font-family: "Merriweather Sans", sans-serif;
+      font-weight: 700; }
+  article.type-system-serif a.read-more, .type-system-serif a.read-more {
+    display: inline-block;
+    font-family: "Merriweather Sans", sans-serif;
+    font-size: 0.8em;
+    font-weight: 700;
+    margin-left: 0.2em;
+    position: relative;
+    text-transform: uppercase; }
+    article.type-system-serif a.read-more span, .type-system-serif a.read-more span {
+      font-family: "Lusitana", serif;
+      font-size: 1.5em;
+      font-style: normal;
+      position: absolute;
+      right: -12px;
+      top: -1px; }
+  article.type-system-serif hr, .type-system-serif hr {
+    width: 3em; }
+  article.type-system-serif p.author, .type-system-serif p.author {
+    font-family: "Merriweather", serif;
+    font-style: italic;
+    padding-bottom: 1em; }
+
 @media only screen and (max-width: 500px) {
+  *, *:before, *:after {
+    box-sizing: border-box; }
   body {
-    background-color: blue; } }
+    margin: 2em; }
+  .plistEmbed {
+    max-width: 68em;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid red;
+    margin-bottom: 1em;
+    max-height: 500px;
+    overflow: hidden; }
+    .plistEmbed::after {
+      clear: both;
+      content: "";
+      display: table; }
+    .plistEmbed .player-container iframe {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 100%;
+      padding: 1em; }
+      .plistEmbed .player-container iframe:last-child {
+        margin-right: 0; }
+    .plistEmbed article .type-system-serif {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 100%;
+      background-color: black; }
+      .plistEmbed article .type-system-serif:last-child {
+        margin-right: 0; } }
+
+@media only screen and (min-width: 700px) {
+  .plistEmbed {
+    max-width: 68em;
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom: 1px solid #DDDDDD;
+    margin-bottom: 1em;
+    max-height: 350px;
+    overflow: hidden; }
+    .plistEmbed::after {
+      clear: both;
+      content: "";
+      display: table; }
+    .plistEmbed .player-container {
+      vertical-align: middle; }
+    .plistEmbed .player-container iframe {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 31.76157%;
+      padding: 0 1em 1em 1em;
+      float: left; }
+      .plistEmbed .player-container iframe:last-child {
+        margin-right: 0; }
+    .plistEmbed article .type-system-serif {
+      float: left;
+      display: block;
+      margin-right: 2.35765%;
+      width: 57.35098%;
+      float: right;
+      padding-bottom: 1em; }
+      .plistEmbed article .type-system-serif:last-child {
+        margin-right: 0; } }
 
 *, *:before, *:after {
   box-sizing: border-box; }
 
 body {
   margin: 2em; }
-
-.plistWrapper {
-  border: .5em solid black; }
-  .plistWrapper .plistEmbed {
-    max-width: 68em;
-    margin-left: auto;
-    margin-right: auto;
-    margin: 1em; }
-    .plistWrapper .plistEmbed::after {
-      clear: both;
-      content: "";
-      display: table; }
-    .plistWrapper .plistEmbed .player {
-      float: left;
-      display: block;
-      margin-right: 2.35765%;
-      width: 23.23176%;
-      border-radius: 10px; }
-      .plistWrapper .plistEmbed .player:last-child {
-        margin-right: 0; }
-    .plistWrapper .plistEmbed .vidDescription {
-      float: left;
-      display: block;
-      margin-right: 2.35765%;
-      width: 74.41059%; }
-      .plistWrapper .plistEmbed .vidDescription:last-child {
-        margin-right: 0; }
 
 /*# sourceMappingURL=main.css.map */
